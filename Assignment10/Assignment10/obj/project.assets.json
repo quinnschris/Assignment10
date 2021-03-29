@@ -1194,7 +1194,7 @@
       "outputPath": "/Users/quinnchristensen/Documents/GitHub/Assignment10/Assignment10/Assignment10/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/quinnchristensen/.config/NuGet/NuGet.Config"
+        "/Users/quinnchristensen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

@@ -17,9 +17,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.4" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="BowlingLeague.sqlite" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BowlingLeague.sqlite" />
+    <Folder Include="Components\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Team\" />
   </ItemGroup>
 </Project>

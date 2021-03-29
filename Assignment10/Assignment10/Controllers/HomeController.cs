@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Assignment10.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment10.Controllers
 {
@@ -13,14 +15,21 @@ namespace Assignment10.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private BowlingLeagueContext _context { get; set; }
+
+
+
+        public HomeController(ILogger<HomeController> logger, BowlingLeagueContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(long? TeamId)
         {
-            return View();
+            return View(_context.Bowlers
+                .FromSqlInterpolated($"SELECT * FROM Bowlers WHERE TeamId = {TeamId} OR {TeamId} IS NULL").
+                ToList());
         }
 
         public IActionResult Privacy()
