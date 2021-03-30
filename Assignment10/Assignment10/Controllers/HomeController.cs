@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Assignment10.Models;
 using Microsoft.EntityFrameworkCore;
+using Assignment10.Models.ViewModels;
 
 namespace Assignment10.Controllers
 {
@@ -25,16 +26,30 @@ namespace Assignment10.Controllers
             _context = context;
         }
 
-        public IActionResult Index(long? TeamId, int PageNum = 0)
+        [HttpGet]
+        public IActionResult Index(long? TeamId, string teamname, int PageNum = 0)
         {
             int PageSize = 5;
 
-            return View(_context.Bowlers
-                .Where(x=> x.TeamId == TeamId || TeamId == null).
-                OrderBy(x => x.BowlerFirstName).
-                Skip((PageNum - 1) * PageSize).
-                Take(PageSize).
-                ToList());
+            return View(new IndexViewModel
+            {
+                Bowlers = _context.Bowlers
+                    .Where(x => x.TeamId == TeamId || TeamId == null).
+                    OrderBy(x => x.BowlerFirstName).
+                    Skip((PageNum - 1) * PageSize).
+                    Take(PageSize).
+                    ToList(),
+
+                PageNumberingInfo = new PageNumberingInfo
+                {
+                    NumItemsPerPage = PageSize,
+                    CurrentPage = PageNum,
+                    TotalNumItems = (TeamId == null ? _context.Bowlers.Count() :
+                            _context.Bowlers.Where(x => x.TeamId == TeamId).Count())
+                },
+
+                TeamName = teamname
+            });
         }
 
         public IActionResult Privacy()
