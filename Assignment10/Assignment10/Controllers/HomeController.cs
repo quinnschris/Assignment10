@@ -25,10 +25,15 @@ namespace Assignment10.Controllers
             _context = context;
         }
 
-        public IActionResult Index(long? TeamId)
+        public IActionResult Index(long? TeamId, int PageNum = 0)
         {
+            int PageSize = 5;
+
             return View(_context.Bowlers
-                .FromSqlInterpolated($"SELECT * FROM Bowlers WHERE TeamId = {TeamId} OR {TeamId} IS NULL").
+                .Where(x=> x.TeamId == TeamId || TeamId == null).
+                OrderBy(x => x.BowlerFirstName).
+                Skip((PageNum - 1) * PageSize).
+                Take(PageSize).
                 ToList());
         }
 
