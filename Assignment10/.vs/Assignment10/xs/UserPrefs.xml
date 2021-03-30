@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{68CB8E00-274C-4D89-9AFD-8655668BD68A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment10/Views/Shared/Components/Team/Default.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assignment10/Startup.cs">
     <Files>
       <File FileName="Assignment10/Controllers/HomeController.cs" Line="28" Column="41" />
       <File FileName="Assignment10/Models/BowlingLeagueContext.cs" />
@@ -8,6 +8,7 @@
       <File FileName="Assignment10/Views/Shared/Components/Team/Default.cshtml" Line="7" Column="1" />
       <File FileName="Assignment10/Views/Shared/_Layout.cshtml" />
       <File FileName="Assignment10/Views/_ViewImports.cshtml" />
+      <File FileName="Assignment10/Startup.cs" Line="60" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,12 +21,11 @@
                 <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True">
                   <Node name="Components" expanded="True">
-                    <Node name="Team" expanded="True">
-                      <Node name="Default.cshtml" selected="True" />
-                    </Node>
+                    <Node name="Team" expanded="True" />
                   </Node>
                 </Node>
               </Node>
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
