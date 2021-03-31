@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Assignment10.Infrastructure
 {
+    // This class dynamically constructs tags on the fly. It's pretty lit.
 
     [HtmlTargetElement("div", Attributes = "page-info")]
     public class PageTagHelper : TagHelper
@@ -16,10 +17,13 @@ namespace Assignment10.Infrastructure
 
         private IUrlHelperFactory _urlInfo;
 
+        // Constructor
         public PageTagHelper (IUrlHelperFactory urlInfo)
         {
             _urlInfo = urlInfo;
         }
+
+        //Variables
 
         [HtmlAttributeNotBound]
         [ViewContext]
@@ -39,6 +43,7 @@ namespace Assignment10.Infrastructure
         public string PageClassSelected { get; set; }
 
 
+        // This is where the magic happens. Tags are built automatically.
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             TagBuilder finishedTag = new TagBuilder("div");

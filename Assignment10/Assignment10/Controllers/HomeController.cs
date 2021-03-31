@@ -26,13 +26,14 @@ namespace Assignment10.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        
         public IActionResult Index(long? TeamId, string teamname, int PageNum = 0)
         {
             int PageSize = 5;
 
             return View(new IndexViewModel
             {
+                // Stores a list of bowlers according to the slected team id
                 Bowlers = _context.Bowlers
                     .Where(x => x.TeamId == TeamId || TeamId == null).
                     OrderBy(x => x.BowlerFirstName).
@@ -40,6 +41,7 @@ namespace Assignment10.Controllers
                     Take(PageSize).
                     ToList(),
 
+                // Creats new pagenumberingo object
                 PageNumberingInfo = new PageNumberingInfo
                 {
                     NumItemsPerPage = PageSize,
@@ -48,6 +50,7 @@ namespace Assignment10.Controllers
                             _context.Bowlers.Where(x => x.TeamId == TeamId).Count())
                 },
 
+                // Stores team name in a string. Lit.
                 TeamName = teamname
             });
         }

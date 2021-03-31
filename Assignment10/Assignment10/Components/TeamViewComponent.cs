@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Assignment10.Components
 {
+    // Class is accessed when displaying data from the view component teammmms.
+
     public class TeamViewComponent : ViewComponent
     {
 

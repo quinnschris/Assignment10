@@ -1,6 +1,8 @@
 ﻿using System;
 namespace Assignment10.Models.ViewModels
 {
+    // Stores all information needed for numbering purposes. Cha ching
+
     public class PageNumberingInfo
     {
         public int NumItemsPerPage { get; set; }
