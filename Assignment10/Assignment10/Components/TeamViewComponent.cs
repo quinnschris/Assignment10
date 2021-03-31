@@ -17,6 +17,9 @@ namespace Assignment10.Components
 
         public IViewComponentResult Invoke()
         {
+
+            ViewBag.SelectedTeam = RouteData?.Values["teamname"];
+
             return View(_context.Teams
                 .OrderBy(x => x.TeamName)
                 .ToList());

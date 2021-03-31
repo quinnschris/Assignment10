@@ -4,14 +4,51 @@
 
 @model IndexViewModel
 
-<h1>@Model.TeamName</h1>
+<h1 class="justify-content-center">@Model.TeamName</h1>
 
-@foreach (var x in Model.Bowlers)
-            {
-                <p>@x.BowlerFirstName @x.BowlerLastName</p>
-            }
-
-<div page-info="@Model.PageNumberingInfo" page-url-teamname="@Model.TeamName">
-
-
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <table class="table table-hover" id="dev-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>Phone #</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.Bowlers)
+                    {
+                        <tr>
+                            <td>@x.BowlerFirstName @x.BowlerMiddleInit @x.BowlerLastName</td>
+                            <td>@x.BowlerAddress</td>
+                            <td>@x.BowlerCity</td>
+                            <td>@x.BowlerState</td>
+                            <td>@x.BowlerZip</td>
+                            <td>@x.BowlerPhoneNumber</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
+    <nav>
+        <ul class="pagination d-flex justify-content-center">
+            <li class="page-item">
+                <div page-info="@Model.PageNumberingInfo"
+                     page-url-teamname="@Model.TeamName"
+                     page-classes-enabled="true"
+                     page-class="btn"
+                     page-class-normal="btn-outline-dark"
+                     page-class-selected="btn-primary"
+                     class="btn-group pull-right m-1">
+                </div>
+            </li>
+        </ul>
+    </nav>
